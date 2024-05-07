@@ -10,7 +10,7 @@ $ pip install juskata
 
 ## Quick Start
 
--[Read this for a quick start](https://juskata.readthedocs.io/en/latest/example.html)
+- [Read this for a quick start](https://juskata.readthedocs.io/en/latest/example.html)
 
 ## Usage
 
