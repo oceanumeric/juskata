@@ -87,7 +87,7 @@ class Num2Words:
         if not isinstance(num, int):
             raise ValueError("The number must be an integer.")
 
-        assert num >= 0
+        assert 0 <= num <= 999999
 
         quotient, remainder = divmod(num, 1000)
 
@@ -105,6 +105,26 @@ class Num2Words:
                 + "-mille-"
                 + self._convert_hundreds(remainder)
             )
+
+    def convert_num_list(self, num_list: list) -> list:
+        """
+        Convert a list of numbers to words in French or Belgium.
+
+        parameters:
+        -----------
+        num_list: list
+            The list of numbers to convert to words.
+
+        returns:
+        --------
+        list
+            The list of numbers in words.
+        """
+
+        if not isinstance(num_list, list):
+            raise ValueError("The input must be a list.")
+
+        return [self.convert_num(num) for num in num_list]
 
     def _convert_20_to_99(self, num: int) -> str:
         """
@@ -229,3 +249,57 @@ if __name__ == "__main__":
     for x in range(10):
         num = random.randint(0, 999999)
         print(f"{num}: {foo.convert_num(num)}")
+
+    print("-" * 50)
+    foo = Num2Words(lang="FR")
+    foo_num_list = [
+        0,
+        1,
+        5,
+        10,
+        11,
+        15,
+        20,
+        21,
+        30,
+        35,
+        50,
+        51,
+        68,
+        70,
+        75,
+        99,
+        100,
+        101,
+        105,
+        111,
+        123,
+        168,
+        171,
+        175,
+        199,
+        200,
+        201,
+        555,
+        999,
+        1000,
+        1001,
+        1111,
+        1199,
+        1234,
+        1999,
+        2000,
+        2001,
+        2020,
+        2021,
+        2345,
+        9999,
+        10000,
+        11111,
+        12345,
+        123456,
+        654321,
+        999999,
+    ]
+
+    print(foo.convert_num_list(foo_num_list))

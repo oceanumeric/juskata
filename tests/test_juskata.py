@@ -87,7 +87,7 @@ def test_convert_hundreds():
     assert num2words_fr._convert_hundreds(999) == "neuf-cent-quatre-vingt-dix-neuf"
 
 
-def test_convert():
+def test_convert_num():
 
     # mainly test for lang = FR
     num2words_fr = Num2Words(lang="FR")
@@ -116,6 +116,10 @@ def test_convert():
     for num, string in zip(test_nums1, test_strings1):
         assert num2words_fr.convert_num(num) == string
 
+    with pytest.raises(AssertionError):
+        # test number > 999999
+        num2words_fr.convert_num(1000000)
+
     assert num2words_fr.convert_num(200) == "deux-cents"
     assert num2words_fr.convert_num(1110) == "mille-cent-dix"
     assert num2words_fr.convert_num(252) == "deux-cent-cinquante-deux"
@@ -140,7 +144,9 @@ def test_convert():
     assert num2words_fr.convert_num(1111) == "mille-cent-onze"
 
     #  test 9999, 10000, 11111, 12345, 123456, 654321, 999999
-    assert num2words_fr.convert_num(9999) == "neuf-mille-neuf-cent-quatre-vingt-dix-neuf"
+    assert (
+        num2words_fr.convert_num(9999) == "neuf-mille-neuf-cent-quatre-vingt-dix-neuf"
+    )
     # some online sources say "dix-mille" is correct, some say "dix-milles"
     assert num2words_fr.convert_num(10000) == "dix-milles"
     assert num2words_fr.convert_num(11111) == "onze-mille-cent-onze"
@@ -157,3 +163,32 @@ def test_convert():
         num2words_fr.convert_num(999999)
         == "neuf-cent-quatre-vingt-dix-neuf-mille-neuf-cent-quatre-vingt-dix-neuf"
     )
+
+
+def test_convert_num_list():
+
+    num2words = Num2Words(lang="FR")
+
+    with pytest.raises(TypeError):
+        num2words.convert_num_list(2, 4)
+
+    with pytest.raises(ValueError):
+        num2words.convert_num_list(2)
+        num2words.convert_num_list((2, 4, 5))
+
+    assert num2words.convert_num_list([0, 1, 17]) == ["zéro", "un", "dix-sept"]
+
+    assert num2words.convert_num_list([75, 99, 100, 101]) == [
+        "soixante-quinze",
+        "quatre-vingt-dix-neuf",
+        "cent",
+        "cent-un",
+    ]
+
+    assert num2words.convert_num_list([10000, 180000, 11111, 123456, 999999]) == [
+        "dix-milles",
+        "cent-quatre-vingt-milles",
+        "onze-mille-cent-onze",
+        "cent-vingt-trois-mille-quatre-cent-cinquante-six",
+        "neuf-cent-quatre-vingt-dix-neuf-mille-neuf-cent-quatre-vingt-dix-neuf",
+    ]

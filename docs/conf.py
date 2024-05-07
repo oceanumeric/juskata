@@ -6,9 +6,9 @@
 
 # -- Project information -----------------------------------------------------
 
-project = u"juskata"
-copyright = u"2024, oceanumeric"
-author = u"oceanumeric"
+project = "juskata"
+copyright = "2024, oceanumeric"
+author = "oceanumeric"
 
 # -- General configuration ---------------------------------------------------
 
