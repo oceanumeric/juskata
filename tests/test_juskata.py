@@ -1,1 +1,1 @@
-from juskata import juskata
+from . import juskata
