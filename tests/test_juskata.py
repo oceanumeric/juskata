@@ -61,7 +61,7 @@ def test_convert_tenths():
 
     assert num2words_fr._convert_tens(56) == "cinquante-six"
     assert num2words_fr._convert_tens(70) == "soixante-dix"
-    assert num2words_fr.convert(71) == "soixante-et-onze"
+    assert num2words_fr._convert_tens(71) == "soixante-et-onze"
     assert num2words_fr._convert_tens(80) == "quatre-vingts"
     assert num2words_fr._convert_tens(80, set_pluras=False) == "quatre-vingt"
     assert num2words_fr._convert_tens(81) == "quatre-vingt-un"
@@ -114,46 +114,46 @@ def test_convert():
     ]
 
     for num, string in zip(test_nums1, test_strings1):
-        assert num2words_fr.convert(num) == string
+        assert num2words_fr.convert_num(num) == string
 
-    assert num2words_fr.convert(200) == "deux-cents"
-    assert num2words_fr.convert(1110) == "mille-cent-dix"
-    assert num2words_fr.convert(252) == "deux-cent-cinquante-deux"
-    assert num2words_fr.convert(200000) == "deux-cent-milles"
-    assert num2words_fr.convert(180000) == "cent-quatre-vingt-milles"
+    assert num2words_fr.convert_num(200) == "deux-cents"
+    assert num2words_fr.convert_num(1110) == "mille-cent-dix"
+    assert num2words_fr.convert_num(252) == "deux-cent-cinquante-deux"
+    assert num2words_fr.convert_num(200000) == "deux-cent-milles"
+    assert num2words_fr.convert_num(180000) == "cent-quatre-vingt-milles"
 
     # test 35, 101, 105, 111, 123
-    assert num2words_fr.convert(35) == "trente-cinq"
-    assert num2words_fr.convert(101) == "cent-un"
-    assert num2words_fr.convert(105) == "cent-cinq"
-    assert num2words_fr.convert(111) == "cent-onze"
-    assert num2words_fr.convert(123) == "cent-vingt-trois"
+    assert num2words_fr.convert_num(35) == "trente-cinq"
+    assert num2words_fr.convert_num(101) == "cent-un"
+    assert num2words_fr.convert_num(105) == "cent-cinq"
+    assert num2words_fr.convert_num(111) == "cent-onze"
+    assert num2words_fr.convert_num(123) == "cent-vingt-trois"
 
     # test 199, 200, 201, 555, 999, 1000, 1001, 1111,
-    assert num2words_fr.convert(199) == "cent-quatre-vingt-dix-neuf"
-    assert num2words_fr.convert(200) == "deux-cents"
-    assert num2words_fr.convert(201) == "deux-cent-un"
-    assert num2words_fr.convert(555) == "cinq-cent-cinquante-cinq"
-    assert num2words_fr.convert(999) == "neuf-cent-quatre-vingt-dix-neuf"
-    assert num2words_fr.convert(1000) == "mille"
-    assert num2words_fr.convert(1001) == "mille-un"
-    assert num2words_fr.convert(1111) == "mille-cent-onze"
+    assert num2words_fr.convert_num(199) == "cent-quatre-vingt-dix-neuf"
+    assert num2words_fr.convert_num(200) == "deux-cents"
+    assert num2words_fr.convert_num(201) == "deux-cent-un"
+    assert num2words_fr.convert_num(555) == "cinq-cent-cinquante-cinq"
+    assert num2words_fr.convert_num(999) == "neuf-cent-quatre-vingt-dix-neuf"
+    assert num2words_fr.convert_num(1000) == "mille"
+    assert num2words_fr.convert_num(1001) == "mille-un"
+    assert num2words_fr.convert_num(1111) == "mille-cent-onze"
 
     #  test 9999, 10000, 11111, 12345, 123456, 654321, 999999
-    assert num2words_fr.convert(9999) == "neuf-mille-neuf-cent-quatre-vingt-dix-neuf"
+    assert num2words_fr.convert_num(9999) == "neuf-mille-neuf-cent-quatre-vingt-dix-neuf"
     # some online sources say "dix-mille" is correct, some say "dix-milles"
-    assert num2words_fr.convert(10000) == "dix-milles"
-    assert num2words_fr.convert(11111) == "onze-mille-cent-onze"
-    assert num2words_fr.convert(12345) == "douze-mille-trois-cent-quarante-cinq"
+    assert num2words_fr.convert_num(10000) == "dix-milles"
+    assert num2words_fr.convert_num(11111) == "onze-mille-cent-onze"
+    assert num2words_fr.convert_num(12345) == "douze-mille-trois-cent-quarante-cinq"
     assert (
-        num2words_fr.convert(123456)
+        num2words_fr.convert_num(123456)
         == "cent-vingt-trois-mille-quatre-cent-cinquante-six"
     )
     assert (
-        num2words_fr.convert(654321)
+        num2words_fr.convert_num(654321)
         == "six-cent-cinquante-quatre-mille-trois-cent-vingt-et-un"
     )
     assert (
-        num2words_fr.convert(999999)
+        num2words_fr.convert_num(999999)
         == "neuf-cent-quatre-vingt-dix-neuf-mille-neuf-cent-quatre-vingt-dix-neuf"
     )

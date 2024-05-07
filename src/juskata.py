@@ -69,7 +69,7 @@ class Num2Words:
 
         self.lang = lang
 
-    def convert(self, num: int) -> str:
+    def convert_num(self, num: int) -> str:
         """
         Convert a number to words in French or Belgium.
 
@@ -221,11 +221,11 @@ if __name__ == "__main__":
     foo = Num2Words(lang="BE")
     for x in range(10):
         num = random.randint(0, 999999)
-        print(f"{num}: {foo.convert(num)}")
+        print(f"{num}: {foo.convert_num(num)}")
 
     print("-" * 50)
     print("Test for lang = 'FR'")
     foo = Num2Words(lang="FR")
     for x in range(10):
         num = random.randint(0, 999999)
-        print(f"{num}: {foo.convert(num)}")
+        print(f"{num}: {foo.convert_num(num)}")
