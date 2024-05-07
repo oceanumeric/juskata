@@ -5,7 +5,7 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 import os
 import sys
-sys.path.insert(1, os.path.abspath('juskata/src'))
+sys.path.insert(0, os.path.abspath('../src'))
 
 # -- Project information -----------------------------------------------------
 project = "juskata"
@@ -19,6 +19,7 @@ author = "oceanumeric"
 # ones.
 extensions = [
     "myst_nb",
+    "sphinx.ext.autodoc",
     "autoapi.extension",
     "sphinx.ext.napoleon",
     "sphinx.ext.viewcode",
