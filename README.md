@@ -8,6 +8,10 @@ A demo package for converting numbers to french words.
 $ pip install juskata
 ```
 
+## Quick Start
+
+-[Read this for a quick start](https://juskata.readthedocs.io/en/latest/example.html)
+
 ## Usage
 
 `juskata` provides a class `Num2Words` that can be used to convert numbers to words. The class takes a single argument `lang` which specifies the language style to use - either "FR" for French or "BE" for Belgium-style French.
