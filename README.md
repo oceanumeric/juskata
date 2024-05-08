@@ -51,7 +51,7 @@ print(n2w_be.convert_num(180000))  # cent-quatre-vingt-milles
 
 ### Use as a web service
 
-To use `juskata` as a web service, one has to install `fastapi`, `pzdantic, and `uvicorn` packages. Please refer to the [FastAPI documentation](https://fastapi.tiangolo.com/) for more information. Assuming that you have installed the required packages, you can create `main.py` file with the following content:
+To use `juskata` as a web service, one has to install `fastapi`, `pydantic`, and `uvicorn` packages. Please refer to the [FastAPI documentation](https://fastapi.tiangolo.com/) for more information. Assuming that you have installed the required packages, you can create `main.py` file with the following content:
 
 ```python
 from juskata import Num2Words
