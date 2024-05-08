@@ -14,6 +14,8 @@ $ pip install juskata
 
 ## Usage
 
+### Use as a library
+
 `juskata` provides a class `Num2Words` that can be used to convert numbers to words. The class takes a single argument `lang` which specifies the language style to use - either "FR" for French or "BE" for Belgium-style French.
 
 Right now, only integer numbers within the range `0-999 999` are supported.
@@ -47,6 +49,63 @@ print(n2w_be.convert_num(80))  # quatre-vingts
 print(n2w_be.convert_num(180000))  # cent-quatre-vingt-milles
 ```
 
+### Use as a web service
+
+To use `juskata` as a web service, one has to install `fastapi`, `pzdantic, and `uvicorn` packages. Please refer to the [FastAPI documentation](https://fastapi.tiangolo.com/) for more information. Assuming that you have installed the required packages, you can create `main.py` file with the following content:
+
+```python
+from juskata import Num2Words
+from fastapi import FastAPI
+from pydantic import BaseModel
+
+
+class Num(BaseModel):
+    lang: str = "FR"
+    num: int
+    
+
+class NumList(BaseModel):
+    lang: str = "FR"
+    num: list[int]
+    
+    
+
+app = FastAPI()
+
+
+@app.get("/")
+async def root():
+    return {"message": "Hello Jus Mundi"}
+
+
+# post request for convereting one number to words
+@app.post("/convert_num/")
+async def convert_num(num: Num):
+    if num.lang in ["FR", "BE"]:
+        return {"frenchWord": Num2Words(lang=num.lang).convert_num(num.num)}
+    else:
+        return {"message": "Language not supported"}
+    
+
+# post request for converting list of numbers to words
+@app.post("/convert_num_list/")
+async def convert_num_list(num: NumList):
+    if num.lang in ["FR", "BE"]:
+        return {"frendWrods": Num2Words(lang=num.lang).convert_num_list(num.num)}
+    else:
+        return {"message": "Language not supported"}
+```
+
+Then run the following command to start the server for testing:
+
+```bash
+# at root directory
+fastapi dev main.py
+```
+
+After this, you can test APIs with swagger UI at `http://127.0.0.1:8000/docs` like the following image shows.
+
+![Swagger UI for juskata](./docs/images/fast-api-test.png)
 
 ## Contributing
 
