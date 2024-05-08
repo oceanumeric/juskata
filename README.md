@@ -105,7 +105,7 @@ fastapi dev main.py
 
 After this, you can test APIs with swagger UI at `http://127.0.0.1:8000/docs` like the following image shows.
 
-![Swagger UI for juskata](./docs/images/fast-api-test.png)
+![Swagger UI for juskata](https://github.com/oceanumeric/juskata/blob/main/docs/images/fast-api-test.png?raw=true)
 
 ## Contributing
 
