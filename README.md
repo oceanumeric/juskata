@@ -10,6 +10,7 @@ $ pip install juskata
 
 ## Quick Start
 
+- [Try it on Google Colab](https://colab.research.google.com/drive/1cLhNob3VcbfQY_1QagrbwF-SG-F-Ry9B?usp=sharing)
 - [Read this for a quick start](https://juskata.readthedocs.io/en/latest/example.html)
 
 ## Usage
