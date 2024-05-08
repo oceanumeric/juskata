@@ -6,13 +6,12 @@ from pydantic import BaseModel
 class Num(BaseModel):
     lang: str = "FR"
     num: int
-    
+
 
 class NumList(BaseModel):
     lang: str = "FR"
     num: list[int]
-    
-    
+
 
 app = FastAPI()
 
@@ -29,7 +28,7 @@ async def convert_num(num: Num):
         return {"frenchWord": Num2Words(lang=num.lang).convert_num(num.num)}
     else:
         return {"message": "Language not supported"}
-    
+
 
 # post request for converting list of numbers to words
 @app.post("/convert_num_list/")

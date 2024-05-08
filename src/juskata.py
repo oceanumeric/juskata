@@ -125,7 +125,6 @@ class Num2Words:
             raise ValueError("The input must be a list.")
 
         return [self.convert_num(num) for num in num_list]
-    
 
     def __str__(self) -> str:
         return f"You chose the language: {self.lang}; I hope I could join Jus Mundi 🚀"
@@ -307,5 +306,5 @@ if __name__ == "__main__":
     ]
 
     print(foo.convert_num_list(foo_num_list))
-    
+
     print(foo)
