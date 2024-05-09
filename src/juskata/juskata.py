@@ -37,31 +37,18 @@ TENS_FR_BE = {**TENS_BASE, 70: "septante", 80: "huitante", 90: "nonante"}
 
 
 class Num2Words:
-    """A class to convert numbers to words in French.
-
-    Attributes:
-    -----------
-    lang: str
-        The language to use for conversion. Default is 'FR' for France.
-        Can only be either 'FR' for France or 'BE' for Belgium.
-
-    Methods:
-    --------
-    convert(num: int) -> str:
-        Convert a number to words in French or Belgium.
+    """A class to convert numbers to words in French or Belgium.
     """
 
     def __init__(self, lang: str = "FR") -> None:
-        """
-        parameters:
-        -----------
-        lang: str
-            The language to use for conversion. Default is 'FR' for France.
-            Can only be either 'FR' for France or 'BE' for Belgium.
+        """Num2Words class constructor for initializing the language.
+
+        Args:
+            lang (str, optional): to set up the language style
+            (either "FR"- France or "BE" Beligum). Defaults to "FR".
 
         Raises:
-        -------
-        ValueError: If the language is not 'FR' or 'BE'.
+            ValueError: If the language is not valid (not "FR" or "BE")
         """
 
         if lang not in ["FR", "BE"]:
@@ -70,18 +57,16 @@ class Num2Words:
         self.lang = lang
 
     def convert_num(self, num: int) -> str:
-        """
-        Convert a number to words in French or Belgium.
+        """Convert a number to words in French or Belgium.
 
-        parameters:
-        -----------
-        num: int
-            The number to convert to words.
+        Args:
+            num (int): The number to convert to words.
 
-        returns:
-        --------
-        str
-            The number in words.
+        Raises:
+            ValueError: If the number is not an integer.
+
+        Returns:
+            str: The number in words.
         """
 
         if not isinstance(num, int):
@@ -107,18 +92,16 @@ class Num2Words:
             )
 
     def convert_num_list(self, num_list: list) -> list:
-        """
-        Convert a list of numbers to words in French or Belgium.
+        """Convert a list of numbers to words in French or Belgium.
 
-        parameters:
-        -----------
-        num_list: list
-            The list of numbers to convert to words.
+        Args:
+            num_list (list): The list of numbers to convert to words.
 
-        returns:
-        --------
-        list
-            The list of numbers in words.
+        Raises:
+            ValueError: If the input is not a list.
+
+        Returns:
+            list: The list of numbers in words.
         """
 
         if not isinstance(num_list, list):
